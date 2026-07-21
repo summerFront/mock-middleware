@@ -13,7 +13,7 @@
 ## 安装
 
 ```bash
-npm install mock-middleware
+npm install dev-mock-middleware
 ```
 
 或将 `index.js` 复制到你的项目中，或通过 require 引入。
