@@ -1,0 +1,21 @@
+{
+  "name": "mock-middleware",
+  "version": "1.0.0",
+  "description": "mock中间件",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/summerFront/mock-middleware.git"
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "mockMiddleware",
+    "mock",
+    "node",
+    "js"
+  ],
+  "author": "summerFront",
+  "license": "ISC"
+}
