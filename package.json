@@ -4,7 +4,7 @@
   "description": "mock中间件",
   "repository": {
     "type": "git",
-    "url": "https://github.com/summerFront/mock-middleware.git"
+    "url": "git+https://github.com/summerFront/mock-middleware.git"
   },
   "main": "index.js",
   "directories": {
