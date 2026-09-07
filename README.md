@@ -20,6 +20,8 @@ npm install dev-mock-middleware
 
 ## 基本使用
 
+### 手动创建devServer的情况
+
 ```javascript
 const express = require('express')
 const { createMockMiddleware } = require('mock-middleware')
@@ -35,6 +37,52 @@ const mockMiddleware = createMockMiddleware({
 app.use(mockMiddleware)
 
 app.listen(8080)
+```
+
+### 使用脚手架内置的devServer的情况
+
+#### 基于webpack的情况
+
+以vue-cli为例，在配置文件中增加 [`devServer.onBeforeSetupMiddleware`](https://www.webpackjs.com/configuration/dev-server/#devserveronbeforesetupmiddleware) 配置项。
+
+```javascript
+const { createMockMiddleware } = require('mock-middleware')
+const mockMiddleware = createMockMiddleware({
+    mockConfigFile: '/path/to/mock.config.js',
+    mockFileDir: '/path/to/mockData',
+})
+module.exports = {
+    devServer: {
+        onBeforeSetupMiddleware(devServer) {
+            devServer.app.use(mockMiddleware)
+        },
+    },
+}
+```
+
+#### 基于vite的情况
+
+在配置文件中添加自定义插件，在插件配置项 [`configureServer`](https://vitejs.cn/guide/api-plugin#configureserver) 中添加 mock 中间件。
+
+> 这个链接好像有点问题，直接复制在浏览器打开和从vite文档首页点到这个链接的页面不一样
+
+```javascript
+const { createMockMiddleware } = require('mock-middleware')
+const mockMiddleware = createMockMiddleware({
+    mockConfigFile: '/path/to/mock.config.js',
+    mockFileDir: '/path/to/mockData',
+})
+
+module.exports = {
+    plugins: [
+        {
+            name: 'mock-plugin',
+            configureServer(server) {
+                server.middlewares.use(mockMiddleware)
+            }
+        }
+    ]
+}
 ```
 
 ## 配置说明
